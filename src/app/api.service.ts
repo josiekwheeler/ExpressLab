@@ -13,7 +13,7 @@ export class ApiService {
   }
 
   addItem(newItem) {
-    return this.http.post("/api/cartitems", { id: newItem }, { responseType: "json"});
+    return this.http.post("/api/cartitems", newItem, { responseType: "json"});
   }
 
   deleteItem(id) {

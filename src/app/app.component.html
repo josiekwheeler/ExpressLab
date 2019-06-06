@@ -1,23 +1,48 @@
 
-<h1>Items of Greatness</h1>
+<h1>The Stoop</h1>
 
-<form #itemsForm="ngForm" (ngSubmit)="addNewItem(itemsForm.value.newItem)">
-    <label for="">New Item</label>
-    <input type="text" ngModel name="newItem">
-    <button>Add Item</button>
-</form>
+<section class = "allItems">
+    <section class="items">
+        <div class="itemsList" *ngFor="let item of cartitems; index as i">
+            <p>{{ item.product }}</p>
+            <p>${{ item.price }}</p>
+            <p>Quantity: {{ item.quantity }}</p>
+            <button (click)="deleteItem(item.id)">X</button>
+            <button (click)="toggleForm(i)">Edit</button>
+
+            <form class="edit" #updateForm="ngForm" *ngIf="item.beingUpdated" (ngSubmit)="[updateAnItem(item), toggleForm(i)]">
+                <label for="">Edit Shoe: </label>
+                <input type="text" [(ngModel)]="item.product" name="product">
+    
+                <label for="">Edit Price: </label>
+                <input type="number" [(ngModel)]="item.price" name="price">
+    
+                <label for="">Edit Quantity: </label>
+                <input type="number" [(ngModel)]="item.quantity" name="quantity">
+                <button>Save Item</button>
+            </form>
+
+    </div>
+    </section>
 
 
-<div *ngFor="let item of cartitems">
-    <p>{{ item.id }}</p>
-    <p>{{ item.product }}</p>
-    <p>{{ item.price }}</p>
-    <p>{{ item.quantity }}</p>
-    <button (click)="deleteItem(item.id)">X</button>
+    <section class="sell">
+        <h2>Sell Your Shoes</h2>
+        <form class="itemsForm" #itemsForm="ngForm" (ngSubmit)="addNewItem(itemsForm)">
+            <div class="sellForm">
+                <label for="">New Shoe: </label>
+                <input type="text" ngModel name="product">
 
-    <form #updateForm="ngForm" (ngSubmit)="updateAnItem(updateForm.value.updatedItemId, item.id)">
-        <label for="">Edit An Item</label>
-        <input type="text" ngModel name="updatedItemName">
-        <button>Save Item</button>
-    </form>
-</div>
+                <label for="">Price: </label>
+                <input type="number" ngModel name="price">
+
+                <label for="">Quantity: </label>
+                <input type="number" ngModel name="quantity">
+            
+            </div>
+
+                <button>Add Item</button>
+            
+        </form>
+    </section>
+</section>

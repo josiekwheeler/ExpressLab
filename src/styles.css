@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-image: url("https://i.pinimg.com/originals/7a/b3/88/7ab38873dc626079eaf3c860a2a1a364.jpg");
+    background-repeat: no-repeat;
+}

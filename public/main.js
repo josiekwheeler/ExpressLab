@@ -47,7 +47,7 @@ var ApiService = /** @class */ (function () {
         return this.http.get("/api/cartitems", { responseType: "json" });
     };
     ApiService.prototype.addItem = function (newItem) {
-        return this.http.post("/api/cartitems", { id: newItem }, { responseType: "json" });
+        return this.http.post("/api/cartitems", newItem, { responseType: "json" });
     };
     ApiService.prototype.deleteItem = function (id) {
         return this.http.delete("/api/cartitems/" + id, { responseType: "json" });
@@ -86,7 +86,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<h1>Items of Greatness</h1>\n\n<!-- <form #itemsForm=\"ngForm\" (ngSubmit)=\"addNewItem(ItemsForm.value.newItem)\">\n    <label for=\"\">New Item</label>\n    <input type=\"text\" ngModel name=\"newItem\">\n    <button>Add Item</button>\n</form> -->\n\n\n<div *ngFor=\"let item of cartitems\">\n    <p>{{ item.id }}</p>\n    <p>{{ item.product }}</p>\n    <p>{{ item.price }}</p>\n    <p>{{ item.quantity }}</p>\n    <button (click)=\"deleteItem(item)\">X</button>\n\n    <!-- <form #updateForm=\"ngForm\" (ngSubmit)=\"updateAnItem(updateForm.value.updatedItemId, item.id)\">\n        <label for=\"\">Edit An Item</label>\n        <input type=\"text\" ngModel name=\"updatedItemName\">\n        <button>Save Item</button>\n    </form> -->\n</div>"
+module.exports = "\n<h1>The Stoop</h1>\n\n<form #itemsForm=\"ngForm\" (ngSubmit)=\"addNewItem(itemsForm)\">\n    <label for=\"\">New Shoe: </label>\n    <input type=\"text\" ngModel name=\"product\">\n\n    <label for=\"\">Price: </label>\n    <input type=\"number\" ngModel name=\"price\">\n\n    <label for=\"\">Quantity: </label>\n    <input type=\"number\" ngModel name=\"quantity\">\n\n    <button>Add Item</button>\n</form>\n\n\n<div *ngFor=\"let item of cartitems; index as i\">\n    <p>{{ item.product }}</p>\n    <p>${{ item.price }}</p>\n    <p>Quantity: {{ item.quantity }}</p>\n    <button (click)=\"deleteItem(item.id)\">X</button>\n\n    <form #updateForm=\"ngForm\" (ngSubmit)=\"updateAnItem(updateForm.value.updatedItemId, item.id)\">\n        <label for=\"\">Edit An Item</label>\n        <input type=\"text\" ngModel name=\"updatedItemName\">\n        <button>Save Item</button>\n    </form>\n</div>"
 
 /***/ }),
 
@@ -113,17 +113,18 @@ var AppComponent = /** @class */ (function () {
         this.title = 'expressLab';
         this.apiService.getItems().subscribe(function (response) {
             _this.cartitems = response;
+            console.log(_this.cartitems);
         });
     }
-    AppComponent.prototype.addNewItem = function (newItem) {
+    AppComponent.prototype.addNewItem = function (form) {
         var _this = this;
-        this.apiService.addItem(newItem).subscribe(function (response) {
+        this.apiService.addItem(tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({}, form.value)).subscribe(function (response) {
             _this.cartitems = response;
         });
     };
-    AppComponent.prototype.deleteItem = function (index) {
+    AppComponent.prototype.deleteItem = function (id) {
         var _this = this;
-        this.apiService.deleteItem(index).subscribe(function (response) {
+        this.apiService.deleteItem(id).subscribe(function (response) {
             _this.cartitems = response;
         });
     };

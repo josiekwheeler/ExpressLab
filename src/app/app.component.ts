@@ -15,11 +15,18 @@ export class AppComponent {
   constructor(private apiService: ApiService) {
     this.apiService.getItems().subscribe(response => {
       this.cartitems = response;
+      console.log(this.cartitems);
     });
   }
 
-  addNewItem(newItem) {
-    this.apiService.addItem(newItem).subscribe(response => {
+  toggleForm(index){
+     this.cartitems[index].beingUpdated = !this.cartitems[index].beingUpdated;
+     console.log(this.cartitems[index]);
+  }
+
+  addNewItem(form) {
+    this.apiService.addItem({
+      ...form.value}).subscribe(response => {
       this.cartitems = response;
     });
   }

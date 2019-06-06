@@ -1,0 +1,108 @@
+h1 {
+    font-family: 'Pacifico', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 90px; 
+}
+
+.allItems {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form {
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 40px;
+}
+.edit {
+    background-color: white;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    color: black;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.itemsList {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    margin-right: 40px;
+    margin-bottom: 50px;
+    background-color: red;
+    color: white;
+    opacity: 0.75; 
+    box-shadow: 5px 5px 12px 8px white;
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+p {
+    margin: 2px;
+}
+
+button {
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    color: white;
+    background-color: black;
+    border: black;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 80%;
+}
+
+h2 {
+
+    font-family: 'Pacifico', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color:white;
+}
+
+.sell {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    border-radius: 10px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    background-color: red;
+    color: white;
+    opacity: 0.75; 
+    box-shadow: 5px 5px 12px 8px white;
+}
+
+input {
+    background-color: black;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    height: 20px;
+}
+
+label{ 
+    margin-left: 10px;
+    font-size: 20px;
+}
